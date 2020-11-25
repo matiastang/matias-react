@@ -2,7 +2,7 @@
  * @Author: tangdaoyong
  * @Date: 2020-11-24 17:24:53
  * @LastEditors: tangdaoyong
- * @LastEditTime: 2020-11-25 10:58:49
+ * @LastEditTime: 2020-11-25 21:42:10
  * @Description: file content
  */
 var path = require('path');
@@ -10,7 +10,7 @@ var path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 // 常量
-// const ENTRYPATH = path.resolve(__dirname, './src/index.js');
+// const ENTRYPATH = path.resolve(__dirname, './src/index.jsx');
 const ENTRYPATH = path.resolve(__dirname, './src/app.tsx');
 const OUTPUTPATH = path.resolve(__dirname, './dist');
 
