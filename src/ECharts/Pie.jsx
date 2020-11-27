@@ -2,7 +2,7 @@
  * @Author: tangdaoyong
  * @Date: 2020-11-26 09:32:07
  * @LastEditors: tangdaoyong
- * @LastEditTime: 2020-11-26 09:41:36
+ * @LastEditTime: 2020-11-26 12:42:00
  * @Description: file content
  */
 import React, { useEffect } from 'react';
@@ -25,12 +25,61 @@ const Pie = (() => {
                 text: 'ECharts pie 饼图示例'
             },
             tooltip: {},
+            backgroundColor: '#2c343c',
+            textStyle: {
+                color: 'rgba(255, 255, 255, 0.3)'
+            },
+            labelLine: {
+                lineStyle: {
+                    color: 'rgba(255, 255, 255, 0.3)'
+                }
+            },
             series: {
                 type: 'pie',
+                roseType: 'angle',
+                label: {
+                    textStyle: {
+                        color: 'rgba(255, 255, 255, 0.3)'
+                    }
+                },
+                itemStyle: {
+                    // 设置扇形的颜色
+                    color: '#c23531',
+                    // 阴影的大小
+                    shadowBlur: 200,
+                    // 阴影水平方向上的偏移
+                    shadowOffsetX: 0,
+                    // 阴影垂直方向上的偏移
+                    shadowOffsetY: 0,
+                    // 阴影颜色
+                    shadowColor: 'rgba(0, 0, 0, 0.5)',
+                    emphasis: {
+                        shadowBlur: 200,
+                        shadowColor: 'rgba(0, 0, 0, 0.5)'
+                    }
+                },
+                visualMap: {
+                    // 不显示 visualMap 组件，只用于明暗度的映射
+                    show: false,
+                    // 映射的最小值为 80
+                    min: 80,
+                    // 映射的最大值为 600
+                    max: 600,
+                    inRange: {
+                        // 明暗度的范围是 0 到 1
+                        colorLightness: [0, 1]
+                    }
+                },
                 data: [
-                    { name: 'A', value: 1212 },
-                    { name: 'B', value: 2323 },
-                    { name: 'C', value: 1919 }
+                    { name: 'A', value: 1212, itemStyle: {
+                        color: '#c23531'
+                    } },
+                    { name: 'B', value: 2323, itemStyle: {
+                        color: '#c23531'
+                    } },
+                    { name: 'C', value: 1919, itemStyle: {
+                        color: '#c23531'
+                    } }
                 ]
             }
         };
