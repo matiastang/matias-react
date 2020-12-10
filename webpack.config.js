@@ -2,7 +2,7 @@
  * @Author: tangdaoyong
  * @Date: 2020-11-24 17:24:53
  * @LastEditors: tangdaoyong
- * @LastEditTime: 2020-11-26 09:13:21
+ * @LastEditTime: 2020-12-10 10:10:09
  * @Description: file content
  */
 var path = require('path');
@@ -12,8 +12,10 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 // 常量
 // const ENTRYPATH = path.resolve(__dirname, './src/index.jsx');
 // const ENTRYPATH = path.resolve(__dirname, './src/app.tsx');
+// WebGL 入口
+const ENTRYPATH = path.resolve(__dirname, './src/WebGLApp.jsx');
 
-const ENTRYPATH = path.resolve(__dirname, './src/ECharts/echartsIndex.jsx');
+// const ENTRYPATH = path.resolve(__dirname, './src/ECharts/echartsIndex.jsx');
 const OUTPUTPATH = path.resolve(__dirname, './dist');
 
 module.exports = {
