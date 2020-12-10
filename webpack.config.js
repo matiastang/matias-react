@@ -2,7 +2,7 @@
  * @Author: tangdaoyong
  * @Date: 2020-11-24 17:24:53
  * @LastEditors: tangdaoyong
- * @LastEditTime: 2020-12-10 10:10:09
+ * @LastEditTime: 2020-12-10 14:21:31
  * @Description: file content
  */
 var path = require('path');
@@ -88,6 +88,10 @@ module.exports = {
             {
                 test: /\.css$/, // 匹配 css 文件
                 use: ['style-loader', 'css-loader']
+            },
+            {
+                test: /\.(png|svg|jpg|jpeg|gif)$/i,
+                type: 'asset/resource'
             }
         ]
     },

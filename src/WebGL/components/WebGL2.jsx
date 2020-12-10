@@ -2,7 +2,7 @@
  * @Author: tangdaoyong
  * @Date: 2020-12-10 10:12:35
  * @LastEditors: tangdaoyong
- * @LastEditTime: 2020-12-10 10:34:04
+ * @LastEditTime: 2020-12-10 16:50:30
  * @Description: WebGL 设置点
  */
 import React, { useEffect } from 'react';
@@ -30,7 +30,7 @@ function WebGL2() {
         // 获取shader中a_position的地址
         const a_position = gl.getAttribLocation(program, 'a_position');
         // 往a_position这个地址中传值
-        gl.vertexAttrib3f(a_position, 1.0, 0.0, 0.0);
+        gl.vertexAttrib3f(a_position, 0.0, 0.0, 0.0);
 
         // 开始绘制，绘制类型是gl.POINTS绘制点，0表示第一个点的索引，1表示共绘制几个点
         gl.drawArrays(gl.POINTS, 0, 1);
