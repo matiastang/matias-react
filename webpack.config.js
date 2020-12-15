@@ -2,7 +2,7 @@
  * @Author: tangdaoyong
  * @Date: 2020-11-24 17:24:53
  * @LastEditors: tangdaoyong
- * @LastEditTime: 2020-12-10 14:21:31
+ * @LastEditTime: 2020-12-15 17:12:02
  * @Description: file content
  */
 var path = require('path');
@@ -12,10 +12,14 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 // 常量
 // const ENTRYPATH = path.resolve(__dirname, './src/index.jsx');
 // const ENTRYPATH = path.resolve(__dirname, './src/app.tsx');
-// WebGL 入口
-const ENTRYPATH = path.resolve(__dirname, './src/WebGLApp.jsx');
-
 // const ENTRYPATH = path.resolve(__dirname, './src/ECharts/echartsIndex.jsx');
+// WebGL 入口
+// const ENTRYPATH = path.resolve(__dirname, './src/WebGLApp.jsx');
+// three 入口
+const ENTRYPATH = path.resolve(__dirname, './src/ThreeApp.tsx');
+// EChart 入口
+// const ENTRYPATH = path.resolve(__dirname, './src/EChartsApp.tsx');
+
 const OUTPUTPATH = path.resolve(__dirname, './dist');
 
 module.exports = {
@@ -48,6 +52,7 @@ module.exports = {
         filename: '[name].bundle.js'
     },
     resolve: {
+        // extensions: ['*', '.tsx', '.ts', '.js', '.jsx', '.glsl']
         extensions: ['*', '.tsx', '.ts', '.js', '.jsx']
     },
     module: { // 加载器
@@ -90,9 +95,31 @@ module.exports = {
                 use: ['style-loader', 'css-loader']
             },
             {
-                test: /\.(png|svg|jpg|jpeg|gif)$/i,
+                test: /\.(png|svg|jpg|jpeg|gif|glsl)$/i,
+                type: 'asset/resource'
+            },
+            {
+                /*
+                * .vert - 顶点着色器
+                * .tesc - 曲面细分控制着色器
+                * .tese - 曲面细分评估着色器
+                * .geom - 几何着色器
+                * .frag - 片段着色器
+                * .comp - 计算着色器
+                */
+                test: /\.(vert|tesc|tese|geom|frag|comp)$/i,
                 type: 'asset/resource'
             }
+            // ,
+            // {
+            //     test: /\.glsl$/,
+            //     use: ['glsl-loader']
+            // }
+            // ,
+            // {
+            //     test: /\.glsl$/,
+            //     use: ['webpack-glsl-minify']
+            // }
         ]
     },
     devServer: { // 配置 webpack-dev-server

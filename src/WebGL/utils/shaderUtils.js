@@ -2,9 +2,46 @@
  * @Author: tangdaoyong
  * @Date: 2020-12-10 09:43:34
  * @LastEditors: tangdaoyong
- * @LastEditTime: 2020-12-10 16:41:54
+ * @LastEditTime: 2020-12-14 16:47:18
  * @Description: 着色语言工具
  */
+
+/**
+ * @description: 加载多图
+ * @param {*} imageURLs
+ * @return {*}
+ */ 
+function loadImages(imageURLs) {
+    // TODO: -- 输入判断
+    let all = [];
+    imageURLs.forEach(element => {
+        all.push(loadImage(element));
+    });
+    return Promise.all(all);
+}
+
+/**
+ * @description: 加载图片
+ * @param {*} src
+ * @return {*}
+ */ 
+function loadImage(src) {
+    // TODO: -- 输入判断
+    return new Promise((resolve, reject) => {
+        let image = new Image();
+        image.onload = function() {
+            resolve(image);
+        };
+        image.onerror = function() {
+            reject(image);
+        };
+        image.onabort = function() {
+            reject(image);
+        };
+        image.src = src;
+    });
+}
+
 /**
  * 
  * @param {WebGLRenderingContext} gl 
@@ -160,7 +197,58 @@ function translationMatrix(translationX, translationY, translationZ) {
     ]);
 }
 
+/**
+ * @description: 加载shader文件并创建program
+ * @param {WebGLRenderingContext} gl
+ * @param {String} vsFile
+ * @param {String} fsFile
+ * @return {Promise}
+ */
+function initShader(gl, vsFile, fsFile) {
+    return new Promise((resolve, reject) => {
+        let loadVShaderPromise = loadShaderFromFile(vsFile);
+        let loadFShaderPromise = loadShaderFromFile(fsFile);
+        Promise.all([loadVShaderPromise, loadFShaderPromise]).then((files) => {
+            let vsContent = files[0];
+            let fsContent = files[1];
+            let sp = initWebGL(gl, vsContent, fsContent);
+            gl.useProgram(sp);
+            resolve(sp);
+        }).catch((err) => {
+            console.log(err);
+            reject(err);
+        }).finally(() => {
+            console.log('加载文件完成');
+        });
+    });
+}
+
+/**
+ * @description: 加载Shader文件
+ * @param {String} filename
+ * @return {Promise}
+ */
+function loadShaderFromFile(filename) {
+    return new Promise((resolve, reject) => {
+        let request = new XMLHttpRequest();
+        request.onreadystatechange = function() {
+            if (request.readyState === 4) {
+                if (request.status === 200) {
+                    resolve(request.responseText);
+                } else {
+                    reject(request.status);
+                }
+            }
+        };
+        request.open('GET', filename, true);
+        request.send();
+    });
+}
+
 export {
+    loadImages,
+    loadImage,
+    initShader,
     getWebGLContext,
     createProjectionMat,
     rotatMatrix,

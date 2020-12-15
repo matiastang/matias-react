@@ -2,7 +2,7 @@
  * @Author: tangdaoyong
  * @Date: 2020-12-10 09:55:00
  * @LastEditors: tangdaoyong
- * @LastEditTime: 2020-12-10 15:34:55
+ * @LastEditTime: 2020-12-14 16:16:07
  * @Description: WebGL 主页
  */
 import React, { useCallback } from 'react';
@@ -13,6 +13,9 @@ import WEBGL3 from './components/WebGL3';
 import WEBGL4 from './components/WebGL4';
 import WEBGL5 from './components/WebGL5';
 import WEBGL6 from './components/WebGL6';
+import WEBGL7 from './components/WebGL7';
+import WEBGL8 from './components/WebGL8';
+import WEBGL9 from './components/WebGL9';
 
 function Home() {
 
@@ -38,12 +41,15 @@ function Home() {
 
     return (
         <>
+            <WEBGL9/>
+            {/* <WEBGL8 />
+            <WEBGL7 />
             <WEBGL6 />
             <WEBGL5 />
             <WEBGL4 />
             <WEBGL3 />
             <WEBGL2 />
-            <WEBGL1 />
+            <WEBGL1 /> */}
             {/* <button onClick={ closeWindow }>关闭当前窗口</button> */}
             {/* <a href="javascript:window.opener=null;window.open('','_self');window.close();">关闭</a> */}
         </>
