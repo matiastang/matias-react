@@ -73,6 +73,10 @@
         "node_modules/*",
         ".babelrc.js",
         "webpack.config.js",
-    ]/* 过滤的文件或文件夹 */
+    ],/* 过滤的文件或文件夹 */
+    "include": [
+      "src",
+      "globals.d.ts"//配置的.d.ts文件
+    ]
 }
   

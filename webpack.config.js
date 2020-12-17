@@ -2,7 +2,7 @@
  * @Author: tangdaoyong
  * @Date: 2020-11-24 17:24:53
  * @LastEditors: tangdaoyong
- * @LastEditTime: 2020-12-15 17:12:02
+ * @LastEditTime: 2020-12-17 16:47:38
  * @Description: file content
  */
 var path = require('path');
@@ -13,10 +13,12 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 // const ENTRYPATH = path.resolve(__dirname, './src/index.jsx');
 // const ENTRYPATH = path.resolve(__dirname, './src/app.tsx');
 // const ENTRYPATH = path.resolve(__dirname, './src/ECharts/echartsIndex.jsx');
+// app 入口
+const ENTRYPATH = path.resolve(__dirname, './src/App.tsx');
 // WebGL 入口
 // const ENTRYPATH = path.resolve(__dirname, './src/WebGLApp.jsx');
 // three 入口
-const ENTRYPATH = path.resolve(__dirname, './src/ThreeApp.tsx');
+// const ENTRYPATH = path.resolve(__dirname, './src/ThreeApp.tsx');
 // EChart 入口
 // const ENTRYPATH = path.resolve(__dirname, './src/EChartsApp.tsx');
 
@@ -53,7 +55,7 @@ module.exports = {
     },
     resolve: {
         // extensions: ['*', '.tsx', '.ts', '.js', '.jsx', '.glsl']
-        extensions: ['*', '.tsx', '.ts', '.js', '.jsx']
+        extensions: ['*', '.tsx', '.ts', '.js', '.jsx', '.svg']
     },
     module: { // 加载器
         rules: [// 规则
@@ -95,8 +97,12 @@ module.exports = {
                 use: ['style-loader', 'css-loader']
             },
             {
-                test: /\.(png|svg|jpg|jpeg|gif|glsl)$/i,
+                test: /\.(png|jpg|jpeg|gif|glsl)$/i,
                 type: 'asset/resource'
+            },
+            {
+                test: /\.svg$/,
+                use: ['@svgr/webpack']
             },
             {
                 /*

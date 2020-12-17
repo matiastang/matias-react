@@ -50,13 +50,15 @@ function Three1() {
         renderer.setSize(width, height);// 设置渲染区域尺寸
         renderer.setClearColor(0xb9d3ff, 1); // 设置背景颜色
         // document.body.appendChild(renderer.domElement); // body元素中插入canvas对象
-        document.getElementById('three')?.appendChild(renderer.domElement);
+        document.getElementById('three-id')?.appendChild(renderer.domElement);
         // 执行渲染操作   指定场景、相机作为参数
         renderer.render(scene, camera);
     });
 
     return (
-        <div id="three" style={{ margin: 0, overflow: 'hidden'/* 隐藏body窗口区域滚动条 */ }}></div>
+        <>
+        </>
+        // <div id="three" style={{ margin: 0, overflow: 'hidden'/* 隐藏body窗口区域滚动条 */ }}></div>
     );
 }
 
