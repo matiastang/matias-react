@@ -6,13 +6,18 @@ import HelloSVG from '../resource/hello.svg';// 引用为React组件
 
 function SVGBase() {
 
+    useEffect(() => {
+        // console.log(helloURL);
+    });
+
     return (
         <>
-            {/* <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
-                <circle cx="100" cy="50" r="40" stroke="black"
-                    stroke-width="2" fill="red" />
-            </svg>
-            <embed src={ helloURL } type="image/svg+html"></embed>
+            {/* <svg width="500px" height="500px">
+                <rect x="0" y="0" width="100" height="100" fill="#feac5e">
+                    <animate attributeName="x" from="0" to="500" dur="2s" repeatCount="indefinite" />
+                </rect>
+            </svg> */}
+            {/* <embed src={ helloURL } type="image/svg+html"></embed>
             <object data={ helloURL } type="image/svg+html"></object>
             <iframe src={ helloURL } ></iframe> */}
             <HelloSVG />

@@ -65,7 +65,10 @@
   
       /* Advanced Options */
       "skipLibCheck": true,                     /* Skip type checking of declaration files. */
-      "forceConsistentCasingInFileNames": true  /* Disallow inconsistently-cased references to the same file. */
+      "forceConsistentCasingInFileNames": true,  /* Disallow inconsistently-cased references to the same file. */
+      // "plugins": [{
+      //   "name": "typescript-plugin-css-modules"
+      // }]
     },
     "exclude": [
         ".history/*",
@@ -78,5 +81,4 @@
       "src",
       "globals.d.ts"//配置的.d.ts文件
     ]
-}
-  
+} 

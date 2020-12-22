@@ -1,0 +1,11 @@
+.point {
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    .chart {
+        margin: 10px 0px;
+    }
+}

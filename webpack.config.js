@@ -2,13 +2,15 @@
  * @Author: tangdaoyong
  * @Date: 2020-11-24 17:24:53
  * @LastEditors: tangdaoyong
- * @LastEditTime: 2020-12-17 16:47:38
+ * @LastEditTime: 2020-12-21 10:51:47
  * @Description: file content
  */
 var path = require('path');
+var webpack = require('webpack');
 // 引入插件
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 // 常量
 // const ENTRYPATH = path.resolve(__dirname, './src/index.jsx');
 // const ENTRYPATH = path.resolve(__dirname, './src/app.tsx');
@@ -24,12 +26,24 @@ const ENTRYPATH = path.resolve(__dirname, './src/App.tsx');
 
 const OUTPUTPATH = path.resolve(__dirname, './dist');
 
+const typingsForCssModulesLoaderConf = {
+    loader: 'typings-for-css-modules-loader',
+    options: {
+        modules: true,
+        namedExport: true,
+        camelCase: true,
+        sass: true
+    }
+};
+
 module.exports = {
     entry: {
         app: ENTRYPATH
     },
     devtool: 'inline-source-map',
     plugins: [
+        // 为了避免webpack因为生成众多的scss.d.ts而导致速度变慢
+        // new webpack.WatchIgnorePlugin([/\.css$/]),
         new CleanWebpackPlugin({ cleanStaleWebpackAssets: false }),
         new HtmlWebpackPlugin({ // 处理 html，配置多个会生成多个 html
             title: 'React学习', // html的标题
@@ -47,7 +61,8 @@ module.exports = {
                 removeRedundantAttributes: true, // 删除多余的属性
                 collapseWhitespace: true // 删除空白符与换行符
             }
-        })
+        }),
+        new ForkTsCheckerWebpackPlugin()
     ],
     output: {
         path: OUTPUTPATH,      // 出口路径
@@ -55,7 +70,7 @@ module.exports = {
     },
     resolve: {
         // extensions: ['*', '.tsx', '.ts', '.js', '.jsx', '.glsl']
-        extensions: ['*', '.tsx', '.ts', '.js', '.jsx', '.svg']
+        extensions: ['*', '.tsx', '.ts', '.js', '.jsx', '.svg', '.scss']
     },
     module: { // 加载器
         rules: [// 规则
@@ -74,11 +89,31 @@ module.exports = {
                     }
                 ]
             },
+            // {
+            //     test: /\.(ts|tsx)$/,
+            //     use: [
+            //         'babel-loader', 'ts-loader'
+            //     ],
+            //     exclude: /node_modules/
+            // },
             {
-                test: /\.(ts|tsx)$/,
+                test: /\.ts$/,
                 use: [
                     'babel-loader', 'ts-loader'
                 ],
+                exclude: /node_modules/
+            },
+            {
+                test: /\.tsx?$/,
+                use: [{
+                    loader: 'babel-loader'
+                }, {
+                    loader: 'ts-loader',
+                    options: {
+                        // disable type checker - we will use it in fork plugin
+                        transpileOnly: true
+                    }
+                }],
                 exclude: /node_modules/
             },
             // {
@@ -95,6 +130,43 @@ module.exports = {
             {
                 test: /\.css$/, // 匹配 css 文件
                 use: ['style-loader', 'css-loader']
+            },
+            {
+                test: /\.scss$/,
+                use: [{
+                    loader: 'style-loader'
+                }, {
+                    loader: '@teamsupercell/typings-for-css-modules-loader',
+                    // typings-for-css-modules-loader让我们可以像使用js模块一样引入css和scss文件。
+                    options: {
+                        formatter: 'prettier'
+                    }
+                }, {
+                    loader: 'css-loader',
+                    options: {
+                        modules: {
+                            localIdentName: '[local]_[hash:base64:5]'
+                        },
+                        sourceMap: true,
+                        importLoaders: 2
+                        // ,
+                        // localsConvention: 'camelCase'
+                    }
+                }, {
+                    loader: 'sass-loader'
+                    // options: {
+                    //     modules: true
+                    // }
+                }, {
+                    loader: 'postcss-loader'
+                }]
+                // use: ['style-loader', 'typings-for-css-modules-loader', 'sass-loader']
+                // exclude: resolve('src/commonStyles'),
+                // rules: [
+                //     {
+                //         use: ['style-loader', typingsForCssModulesLoaderConf]
+                //     }
+                // ]
             },
             {
                 test: /\.(png|jpg|jpeg|gif|glsl)$/i,

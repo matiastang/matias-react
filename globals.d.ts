@@ -2,7 +2,7 @@
  * @Author: tangdaoyong
  * @Date: 2020-12-17 15:55:18
  * @LastEditors: tangdaoyong
- * @LastEditTime: 2020-12-17 17:05:34
+ * @LastEditTime: 2020-12-21 11:03:52
  * @Description: ts配置文件
  */
 declare module '*.module.css' {
@@ -19,6 +19,11 @@ declare module '*.module.scss' {
     const classes: { readonly [key: string]: string };
     export default classes;
 }
+
+// declare module '*.scss' {
+//     const classes: { readonly [key: string]: string };
+//     export default classes;
+// }
 
 // 全局声明svg component定义
 declare interface SvgrComponent extends React.FunctionComponent<React.SVGAttributes<SVGAElement>> {}
