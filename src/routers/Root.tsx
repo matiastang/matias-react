@@ -13,6 +13,8 @@ import Hello from '../G2/components/hello';
 import Point from '../G2/components/geometry/point/Point';
 import Line from '../G2/components/geometry/path&line/Line';
 import Polygon from '../G2/components/geometry/polygon/Polygon';
+import GView from '../G2/components/view/View';
+import GLPointColors from '../WebGL/components/glsl/GLPointColor';
 
 import G2Routers from '../G2/G2Home';
 
@@ -74,15 +76,20 @@ const Root: FC = () => {
         //     }
         // </HashRouter>
         <HashRouter>
-            <Route path="/" exact  component={ SVGHome } />
+            <Route path="/" exact  component={ GLPointColors } />
             <Route path="/svg" exact  component={ SVGHome } />
             <Route path="/three" exact  component={ Three } />
             <Route path="/g2/hello" exact  component={ Hello } />
             <Route path="/g2/point" exact  component={ Point } />
             <Route path="/g2/line" exact  component={ Line } />
             <Route path="/g2/polygon" exact  component={ Polygon } />
+            <Route path="/g2/view" exact  component={ GView } />
+            <Route path="/webgl/glpointcolors" exact  component={ GLPointColors } />
             {/* <Route path="/g2" exact component={ Layout } >
                 <G2Home />
+            </Route> */}
+            {/* <Route path="/webgl">
+                <Route path="glpointcolors" component={ GLPointColors } />
             </Route> */}
             {/* <Route path="*" component={ Error } /> */}
         </HashRouter>

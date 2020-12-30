@@ -2,10 +2,9 @@
  * @Author: tangdaoyong
  * @Date: 2020-12-15 10:39:54
  * @LastEditors: tangdaoyong
- * @LastEditTime: 2020-12-15 13:34:00
+ * @LastEditTime: 2020-12-25 18:10:51
  * @Description: 着色语言工具
  */
-import { isEmpty } from 'lodash';
 
 /**
  * @description: 获取WebGL context(兼容几种浏览器的获取方式)
@@ -15,15 +14,16 @@ import { isEmpty } from 'lodash';
  */
 function getWebGLContext(canvas: HTMLCanvasElement, options?: any): WebGLRenderingContext | null {
     let names = ['webgl', 'experimental-webgl', 'webkit-3d', 'moz-webgl'];
-    let context = null;
+    let context:null  = null;
     // 不使用forEach无法退出
     for (var i = 0; i < names.length; ++i ) {
         try {
             let canvasContext = canvas.getContext(names[i], options);
-            if (canvasContext === null || Object.is(canvasContext, WebGLRenderingContext)) {
-                return <WebGLRenderingContext | null>canvasContext;
+            if (canvasContext !== null && canvasContext instanceof WebGLRenderingContext) {
+                return <WebGLRenderingContext>canvasContext;
             }
         } catch (e) {
+            console.log(e);
             continue;
         }
     }

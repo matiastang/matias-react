@@ -2,7 +2,7 @@
  * @Author: tangdaoyong
  * @Date: 2020-11-24 17:24:53
  * @LastEditors: tangdaoyong
- * @LastEditTime: 2020-12-21 10:51:47
+ * @LastEditTime: 2020-12-25 17:59:56
  * @Description: file content
  */
 var path = require('path');
@@ -70,7 +70,12 @@ module.exports = {
     },
     resolve: {
         // extensions: ['*', '.tsx', '.ts', '.js', '.jsx', '.glsl']
-        extensions: ['*', '.tsx', '.ts', '.js', '.jsx', '.svg', '.scss']
+        extensions: ['*', '.tsx', '.ts', '.js', '.jsx', '.svg', '.scss', '.vert', '.tesc', '.tese', '.geom', '.frag', '.comp'],
+        alias: {
+            services: path.resolve(__dirname, 'src/services/')
+            // ,
+            // glslShader: path.resolve(__dirname, 'src/WebGL/shader/')
+        }
     },
     module: { // 加载器
         rules: [// 规则
@@ -96,15 +101,16 @@ module.exports = {
             //     ],
             //     exclude: /node_modules/
             // },
+            // {
+            //     test: /\.ts$/,
+            //     use: [
+            //         'babel-loader', 'ts-loader'
+            //     ],
+            //     exclude: /node_modules/
+            // },
             {
-                test: /\.ts$/,
-                use: [
-                    'babel-loader', 'ts-loader'
-                ],
-                exclude: /node_modules/
-            },
-            {
-                test: /\.tsx?$/,
+                // test: /\.tsx?$/,
+                test: /\.(ts|tsx)$/,
                 use: [{
                     loader: 'babel-loader'
                 }, {
@@ -169,7 +175,8 @@ module.exports = {
                 // ]
             },
             {
-                test: /\.(png|jpg|jpeg|gif|glsl)$/i,
+                // test: /\.(png|jpg|jpeg|gif|glsl)$/i,
+                test: /\.(png|jpg|jpeg|gif)$/i,
                 type: 'asset/resource'
             },
             {
@@ -185,8 +192,9 @@ module.exports = {
                 * .frag - 片段着色器
                 * .comp - 计算着色器
                 */
-                test: /\.(vert|tesc|tese|geom|frag|comp)$/i,
-                type: 'asset/resource'
+                test: /\.(vert|tesc|tese|geom|frag|comp|glsl)$/i,
+                // type: 'asset/resource'
+                use: ['webpack-glsl-minify']
             }
             // ,
             // {

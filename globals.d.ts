@@ -2,7 +2,7 @@
  * @Author: tangdaoyong
  * @Date: 2020-12-17 15:55:18
  * @LastEditors: tangdaoyong
- * @LastEditTime: 2020-12-21 11:03:52
+ * @LastEditTime: 2020-12-25 14:59:08
  * @Description: ts配置文件
  */
 declare module '*.module.css' {
@@ -36,6 +36,17 @@ declare module '*.svg' {
 
 // 全局声明
 // declare module '*.svg' {
+//     const classes: { readonly [key: string]: string };
+//     export default classes;
+// }
+
+// vert|tesc|tese|geom|frag|comp
+// declare module '*.vert' {
+//     const classes: { readonly [key: string]: string };
+//     export default classes;
+// }
+
+// declare module '*.frag' {
 //     const classes: { readonly [key: string]: string };
 //     export default classes;
 // }
