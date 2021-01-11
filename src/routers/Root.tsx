@@ -15,6 +15,7 @@ import Line from '../G2/components/geometry/path&line/Line';
 import Polygon from '../G2/components/geometry/polygon/Polygon';
 import GView from '../G2/components/view/View';
 import GLPointColors from '../WebGL/components/glsl/GLPointColor';
+import IOS from '../ios/Ios';
 
 import G2Routers from '../G2/G2Home';
 
@@ -76,7 +77,7 @@ const Root: FC = () => {
         //     }
         // </HashRouter>
         <HashRouter>
-            <Route path="/" exact  component={ GLPointColors } />
+            <Route path="/" exact  component={ IOS } />
             <Route path="/svg" exact  component={ SVGHome } />
             <Route path="/three" exact  component={ Three } />
             <Route path="/g2/hello" exact  component={ Hello } />

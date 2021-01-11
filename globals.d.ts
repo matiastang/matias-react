@@ -2,7 +2,7 @@
  * @Author: tangdaoyong
  * @Date: 2020-12-17 15:55:18
  * @LastEditors: tangdaoyong
- * @LastEditTime: 2020-12-25 14:59:08
+ * @LastEditTime: 2021-01-08 17:56:14
  * @Description: ts配置文件
  */
 declare module '*.module.css' {
@@ -50,3 +50,18 @@ declare module '*.svg' {
 //     const classes: { readonly [key: string]: string };
 //     export default classes;
 // }
+
+// interface PostMessage {
+//     postMessage(parameters: Object): Promise
+// }
+// interface IOSWebkit extends Window {
+//     webkit: {
+//         messageHandlers: {
+//             jsConsole: {
+//                 postMessage: PostMessage
+//             }
+//         }
+//     }
+//     // window.webkit.messageHandlers.jsConsole.postMessage(parameters);
+// }
+declare var window: Window & { webkit: any };

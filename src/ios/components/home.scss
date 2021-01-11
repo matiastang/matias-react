@@ -1,0 +1,16 @@
+.home {
+    .header {
+        color: red;
+    }
+    .footer {
+        color: burlywood;
+    }
+    @media no-header-and-footer-device {
+        .header {
+            visibility: hidden;
+        }
+        .footer {
+            visibility: hidden;
+        }
+    }
+}
