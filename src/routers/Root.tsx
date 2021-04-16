@@ -19,6 +19,9 @@ import IOS from '../ios/Ios';
 
 import G2Routers from '../G2/G2Home';
 
+// UI
+import Input from '../UI/UITest';
+
 let routes = [
     // {
     //     path: '/',
@@ -100,6 +103,12 @@ const Root: FC = () => {
                     <Switch>
                         <Route exact path="/webgl/glpointcolor" component={ GLPointColor }/>
                         <Route component={() => <div>webgl 404</div> } />
+                    </Switch>
+                )} />
+                <Route path="/UI" component={() => (
+                    <Switch>
+                        <Route exact path="/UI/Input" component={ Input }/>
+                        <Route component={() => <div>UI 404</div> } />
                     </Switch>
                 )} />
                 <Route component={() => <div>ROOT 404</div> } />
