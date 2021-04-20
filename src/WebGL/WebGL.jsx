@@ -2,7 +2,7 @@
  * @Author: tangdaoyong
  * @Date: 2020-12-10 09:55:00
  * @LastEditors: tangdaoyong
- * @LastEditTime: 2020-12-14 16:16:07
+ * @LastEditTime: 2021-04-19 17:44:39
  * @Description: WebGL 主页
  */
 import React, { useCallback } from 'react';
@@ -42,7 +42,8 @@ function Home() {
     return (
         <>
             <WEBGL9/>
-            {/* <WEBGL8 />
+            <WEBGL8 />
+            {/*
             <WEBGL7 />
             <WEBGL6 />
             <WEBGL5 />

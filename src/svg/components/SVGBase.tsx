@@ -3,6 +3,7 @@ import { hot } from 'react-hot-loader/root';// 引入hot
 import HelloSVG from '../resource/hello.svg';// 引用为React组件
 // import helloURL, { ReactComponent as HelloSVG } from '../resource/hello.svg';
 // const helloURL = require('../resource/hello.svg');// 引入路径使用
+import TitleSVG from '../../images/magicpoly/darkNight/title.svg';
 
 function SVGBase() {
 
@@ -20,6 +21,10 @@ function SVGBase() {
             {/* <embed src={ helloURL } type="image/svg+html"></embed>
             <object data={ helloURL } type="image/svg+html"></object>
             <iframe src={ helloURL } ></iframe> */}
+            <TitleSVG style={{
+                width: '300px',
+                height: '300px'
+            }}/>
             <HelloSVG />
         </>
     );

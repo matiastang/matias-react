@@ -15,6 +15,7 @@ import Line from '../G2/components/geometry/path&line/Line';
 import Polygon from '../G2/components/geometry/polygon/Polygon';
 import GView from '../G2/components/view/View';
 import GLPointColor from '../WebGL/components/glsl/GLPointColor';
+import WEBGL from '../WebGL/WebGL';
 import IOS from '../ios/Ios';
 
 import G2Routers from '../G2/G2Home';
@@ -101,6 +102,7 @@ const Root: FC = () => {
                 )} />
                 <Route path="/webgl" component={() => (
                     <Switch>
+                        <Route exact path="/webgl/webgl" component={ WEBGL }/>
                         <Route exact path="/webgl/glpointcolor" component={ GLPointColor }/>
                         <Route component={() => <div>webgl 404</div> } />
                     </Switch>
