@@ -7,13 +7,13 @@ import { hot } from 'react-hot-loader/root';
 import Layout from '../layout/Layout';
 import SVGHome from '../svg/SVG';
 import Three from '../threejs/ThreeJS';
-import G2Home from '../G2/G2Home';
+// import G2Home from '../G2/G2Home';
 // import Error from '../components/Error';
 import Hello from '../G2/components/hello';
 import Point from '../G2/components/geometry/point/Point';
 import Line from '../G2/components/geometry/path&line/Line';
 import Polygon from '../G2/components/geometry/polygon/Polygon';
-import GView from '../G2/components/view/View';
+// import GView from '../G2/components/view/View';
 import GLPointColor from '../WebGL/components/glsl/GLPointColor';
 import WEBGL from '../WebGL/WebGL';
 import IOS from '../ios/Ios';
@@ -38,24 +38,24 @@ let routes = [
         path: '/three',
         component: Three,
         exact: true
-    },
-    {
-        path: '/g2',
-        children: [
-            {
-                path: '/g2/hello',
-                component: Hello
-            },
-            {
-                path: '/g2/point',
-                component: Point
-            },
-            {
-                path: '/g2/line',
-                component: Line
-            }
-        ]
     }
+    // {
+    //     path: '/g2',
+    //     children: [
+    //         {
+    //             path: '/g2/hello',
+    //             component: Hello
+    //         },
+    //         {
+    //             path: '/g2/point',
+    //             component: Point
+    //         },
+    //         {
+    //             path: '/g2/line',
+    //             component: Line
+    //         }
+    //     ]
+    // }
 ];
 
 // routes.push(G2Routers);
@@ -89,9 +89,9 @@ const Root: FC = () => {
                         <Route component={() => <div>three 404</div> } />
                     </Switch>
                 )} />
-                <Route path="/g2" component={() => (
+                {/* <Route path="/g2" component={() => (
                     <Switch>
-                        {/* <Route exact path="/" component={ G2Home }/> */}
+                        <Route exact path="/" component={ G2Home }/>
                         <Route exact path="/g2/hello" component={ Hello }/>
                         <Route exact path="/g2/point" component={ Point }/>
                         <Route exact path="/g2/line" component={ Line }/>
@@ -99,7 +99,7 @@ const Root: FC = () => {
                         <Route exact path="/g2/view" component={ GView }/>
                         <Route component={() => <div>g2 404</div> } />
                     </Switch>
-                )} />
+                )} /> */}
                 <Route path="/webgl" component={() => (
                     <Switch>
                         <Route exact path="/webgl/webgl" component={ WEBGL }/>

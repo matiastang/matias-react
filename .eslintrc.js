@@ -97,8 +97,9 @@ module.exports = {
         'comma-spacing': 'error',
         'comma-style': 'error',
         'comma-dangle': 'error',
-        'semi': 'error',
+        'semi': 'off', // 关闭强制分号
         'semi-spacing': 'error',
+        'semi-style': 'off',
         'key-spacing': 'error',
         'curly': 'error',
         'use-isnan': 'error',
