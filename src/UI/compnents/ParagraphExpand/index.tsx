@@ -2,11 +2,11 @@
  * @Author: matiastang
  * @Date: 2022-09-30 17:08:52
  * @LastEditors: matiastang
- * @LastEditTime: 2022-10-08 14:28:05
+ * @LastEditTime: 2022-10-08 16:17:12
  * @FilePath: /matias-react/src/UI/compnents/ParagraphExpand/index.tsx
  * @Description: 省略文本展开
  */
-import React, { memo, Fragment, useState, useEffect } from 'react'
+import React, { memo, useState, useEffect } from 'react'
 import { Typography } from 'antd'
 
 const { Paragraph } = Typography
@@ -53,7 +53,7 @@ const ParagraphExpand: React.FC<ParagraphExpandType> = (props) => {
         setKey(key + 1)
     }
 
-    return <Fragment>
+    return <>
         <div key={key}>
             <Paragraph ellipsis={{ rows: paragraphRows, expandable: true, onExpand: onExpand }}>
                 { props.content || '--'}
@@ -62,7 +62,7 @@ const ParagraphExpand: React.FC<ParagraphExpandType> = (props) => {
         {
             fold && <a href=":;" onClick={ onCollapse }>{ fold ? '收起' : '展开' }</a>
         }
-    </Fragment>
+    </>
 }
 
 export default memo(ParagraphExpand)

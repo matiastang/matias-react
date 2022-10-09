@@ -1,0 +1,35 @@
+.content {
+    width: 100%;
+    .expand-content {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+    }
+    .text {
+        font-size: 14px;
+        font-family: PingFangSC-Regular, PingFang SC;
+        font-weight: 400;
+        color: #262626;
+        line-height: 22px;
+    }
+    .expand-text {
+        .text();
+        // 保留几行文本
+        word-wrap: break-word;
+        word-break: break-all;
+        // 限制@num行
+        overflow: hidden;
+        // -webkit-line-clamp: @num;
+        // line-clamp: @num;
+        -webkit-box-orient: vertical;
+        box-orient: vertical;
+        display: -webkit-box;
+        display: box;
+    }
+    .expand, .collapse {
+        flex-shrink: 0;
+        cursor: pointer;
+        text-decoration: dashed;
+        color: #467FEA;
+    }
+}
