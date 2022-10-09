@@ -2,8 +2,8 @@
  * @Author: matiastang
  * @Date: 2022-09-30 17:08:52
  * @LastEditors: matiastang
- * @LastEditTime: 2022-10-09 11:05:46
- * @FilePath: /papillon-web-matias/src/components/ParagraphsExpand/index.tsx
+ * @LastEditTime: 2022-10-09 12:35:00
+ * @FilePath: /matias-react/src/UI/compnents/ParagraphsExpand/index.tsx
  * @Description: 省略文本展开
  */
 import React, { memo, useMemo, useState, useRef, useEffect, useCallback } from 'react'
@@ -92,8 +92,11 @@ const ParagraphsExpand: React.FC<ParagraphExpandType> = (props) => {
         }
     }, [contentRef])
 
+    const contents = useMemo(() => {
+        return Array.isArray(content) ? content : content.split(separator || '<br/>').filter((value: string) => value.trim())
+    }, [content])
+
     const paragraphs = useMemo(() => {
-        const contents = Array.isArray(content) ? content : content.split(separator || '<br/>').filter((value: string) => value.trim())
         if (expand) {
             return contents
         }
@@ -112,7 +115,7 @@ const ParagraphsExpand: React.FC<ParagraphExpandType> = (props) => {
         }
         setParagraphRows(undefined)
         return paragraphs
-    }, [content, separator, rows, expand, contentWidth])
+    }, [contents, separator, rows, expand, contentWidth])
 
     const onExpand = (e: any) => {
         e.preventDefault()
@@ -130,7 +133,7 @@ const ParagraphsExpand: React.FC<ParagraphExpandType> = (props) => {
                 if (index !== paragraphs.length - 1) {
                     return <div className={styles.text} key={index}>{ paragraph || '--' }</div>
                 }
-                if (paragraphs.length === props.content.length) {
+                if (paragraphs.length === contents.length) {
                     return <div className={styles['expand-content']} key={index}>
                         {
                             expand && <>
